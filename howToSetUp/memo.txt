@@ -1,0 +1,4 @@
+how to setup kali-linux? # https://www.youtube.com/watch?v=U09soewiu18
+\https://tryhackme.com/access # download EU-Regular-1
+open vpn filename
+# check "Initialization Sequence Completed"
