@@ -1,0 +1,23 @@
+go to https://tryhackme.com/room/cicada3301vol1
+Download Task Files
+unzip cicada3301.zip
+sonic-visualiser 3301.wav
+Layer > Add Spectrogram
+get QR code and move web site //by phone, maybe?
+get passphrase and key from web site
+use cyberchef. decode passphrase and key.
+use cyberchef by Vigenere Encode. key=above, use passphrase in input from above.
+steghide extract -sf ***.jpg // use passphrase from above
+cat ***.txt // get url
+download image.
+mv ***.jpeg ***.jpg
+outguess -r ***.jpeg output //'strings ***.jpeg' did not work.
+cat output
+hash-identifier output // find SHA-512 or whirlpool
+echo 'hash' > hash.txt
+john --wordlist=/usr/share/wordlists/rockyou.txt --format=Raw-SHA512 hash.txt //both SHA512 and whirlpool did not work.
+go to md5hashing.net hash SHA512 // get url
+go to web site from above.
+eg. I(Chapter I):1(line no.1):6(index of words)
+eg. I(Chapter I):23(line no.23):-1(-1 means move 1 word left from '.') // get url
+go to url // remenber the song name. it is the last question.
